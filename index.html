@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christine — Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #faf5ff;
+      color: #2d2b3a;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ── Header ───────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 2.5rem;
+      background: rgba(252, 209, 245, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #5b4a7a;
+      letter-spacing: 0.5px;
+    }
+
+    header nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    header nav a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #5b4a7a;
+      transition: color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    header nav a:hover {
+      color: #97a5ee;
+      transform: translateY(-2px);
+    }
+
+    /* ── Sections common ──────────────────────── */
+    section {
+      padding: 6rem 2.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #3d2f5c;
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      border-radius: 4px;
+      background: #b795e4;
+    }
+
+    /* ── Hero ─────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 8rem;
+      background: linear-gradient(135deg, #fcd1f5 0%, #efbbf0 50%, #b795e4 100%);
+    }
+
+    #hero h1 {
+      font-size: 3rem;
+      color: #3d2f5c;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    #hero h1:hover {
+      transform: scale(1.04);
+    }
+
+    #hero p {
+      font-size: 1.15rem;
+      color: #5b4a7a;
+      max-width: 520px;
+      transition: transform 0.3s ease;
+    }
+
+    #hero p:hover {
+      transform: scale(1.02);
+    }
+
+    /* ── Floating shapes ──────────────────────── */
+    .floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-shapes .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: floatUp linear infinite;
+    }
+
+    .floating-shapes .shape:nth-child(1) {
+      width: 60px;
+      height: 60px;
+      background: #fcd1f5;
+      left: 10%;
+      animation-duration: 18s;
+      animation-delay: 0s;
+    }
+    .floating-shapes .shape:nth-child(2) {
+      width: 90px;
+      height: 90px;
+      background: #efbbf0;
+      left: 30%;
+      animation-duration: 22s;
+      animation-delay: 3s;
+    }
+    .floating-shapes .shape:nth-child(3) {
+      width: 50px;
+      height: 50px;
+      background: #b795e4;
+      left: 55%;
+      animation-duration: 16s;
+      animation-delay: 5s;
+    }
+    .floating-shapes .shape:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      background: #97a5ee;
+      left: 75%;
+      animation-duration: 24s;
+      animation-delay: 1s;
+    }
+    .floating-shapes .shape:nth-child(5) {
+      width: 45px;
+      height: 45px;
+      background: #95dff2;
+      left: 90%;
+      animation-duration: 14s;
+      animation-delay: 7s;
+    }
+    .floating-shapes .shape:nth-child(6) {
+      width: 70px;
+      height: 70px;
+      background: #fcd1f5;
+      left: 20%;
+      animation-duration: 20s;
+      animation-delay: 2s;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    .floating-shapes .shape:nth-child(7) {
+      width: 55px;
+      height: 55px;
+      background: #b795e4;
+      left: 65%;
+      animation-duration: 19s;
+      animation-delay: 9s;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.25;
+      }
+      90% {
+        opacity: 0.25;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* ── About ────────────────────────────────── */
+    #about {
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about > *:not(.floating-shapes) {
+      position: relative;
+      z-index: 1;
+    }
+
+    #about .content {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    #about .text {
+      flex: 2;
+      min-width: 240px;
+    }
+
+    #about .text p {
+      margin-bottom: 1rem;
+      color: #3d3a4a;
+    }
+
+    #about .photo-frame {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 4px solid #b795e4;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #b795e4;
+      background: #faf5ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      margin: 1.5rem auto 0;
+    }
+
+    #about .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #about .photo-frame:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(183, 149, 228, 0.35);
+    }
+
+    #about .sidebar {
+      flex: 1;
+      min-width: 180px;
+      background: #fcd1f5;
+      padding: 1.5rem;
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #about .sidebar:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(183, 149, 228, 0.3);
+    }
+
+    #about .sidebar h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #3d2f5c;
+    }
+
+    #about .sidebar ul {
+      list-style: none;
+    }
+
+    #about .sidebar ul li {
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+      color: #4b3e66;
+      transition: transform 0.2s ease, color 0.2s ease;
+      cursor: default;
+    }
+
+    #about .sidebar ul li:hover {
+      transform: translateX(6px);
+      color: #97a5ee;
+    }
+
+    #about .sidebar ul li::before {
+      content: '✦ ';
+      color: #97a5ee;
+      transition: color 0.2s ease;
+    }
+
+    #about .sidebar ul li:hover::before {
+      color: #b795e4;
+    }
+
+    /* ── Contact ──────────────────────────────── */
+    #contact {
+      background: #f8f2ff;
+    }
+
+    #contact .wrapper {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    #contact form {
+      flex: 2;
+      min-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    #contact form input,
+    #contact form textarea {
+      padding: 0.85rem 1rem;
+      border: 2px solid #efbbf0;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #ffffff;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    #contact form input:hover,
+    #contact form textarea:hover {
+      border-color: #b795e4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(183, 149, 228, 0.15);
+    }
+
+    #contact form input:focus,
+    #contact form textarea:focus {
+      outline: none;
+      border-color: #97a5ee;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(151, 165, 238, 0.2);
+    }
+
+    #contact form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    #contact form button {
+      align-self: flex-start;
+      padding: 0.75rem 2rem;
+      background: #b795e4;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    #contact form button:hover {
+      background: #97a5ee;
+      transform: scale(1.03);
+    }
+
+    #contact .info {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    #contact .info .item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: #3d3a4a;
+      transition: transform 0.2s ease;
+    }
+
+    #contact .info .item:hover {
+      transform: translateX(6px);
+    }
+
+    #contact .info .item .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #efbbf0;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    #contact .info .item:hover .icon {
+      background: #97a5ee;
+      transform: scale(1.15);
+    }
+
+    /* ── Footer ───────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 1.75rem 2rem;
+      background: #3d2f5c;
+      color: #efbbf0;
+      font-size: 0.85rem;
+      transition: background 0.3s ease;
+    }
+
+    footer:hover {
+      background: #4a3a6e;
+    }
+
+    footer span {
+      color: #95dff2;
+    }
+
+    /* ── Responsive ───────────────────────────── */
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem 1.25rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      #hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <div class="logo">Christine</div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <h1>Hi, I'm Christine</h1>
+    <p>Welcome to my portfolio — a space where creativity meets purpose. More coming soon!</p>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <h2>About Me</h2>
+    <div class="content">
+      <div class="text">
+        <p>
+          Hello! I am Christine Mae David Limpin, a STEM student who enjoys working with
+          young children. I am passionate about storytelling and helping kinder and daycare
+          learners develop basic learning skills. I am patient, responsible, and committed
+          to creating a fun and positive learning environment.
+        </p>
+        <div class="photo-frame">
+          <img src="christine-photo.jpg" alt="Christine Mae David Limpin">
+        </div>
+      </div>
+      <div class="sidebar">
+        <h3>Skills &amp; Expertise</h3>
+        <ul>
+          <li>Storytelling for Kinder and Daycare Students</li>
+          <li>Basic Math Learning Support</li>
+          <li>Reading and Counting Activities</li>
+          <li>Communication and Patience with Young Learners</li>
+        </ul>
+        <h3 style="margin-top:1.5rem;">Services Offered</h3>
+        <ul>
+          <li>Storytelling Sessions</li>
+          <li>Basic Math Assistance</li>
+          <li>Reading and Counting Practice</li>
+          <li>Homework and Activity Support</li>
+          <li>Early Childhood Learning Assistance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="wrapper">
+      <form>
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Your email" required>
+        <textarea placeholder="Your message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div class="info">
+        <div class="item"><span class="icon">✉</span> hello@christine.dev</div>
+        <div class="item"><span class="icon">✆</span> +1 234 567 890</div>
+        <div class="item"><span class="icon">◉</span> Based in Tarlac, PH</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+
+  </footer>
+
+</body>
+</html>
